@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn and practice skills with guided lessons, exercises, and projects">
+  <title>Learning Hub — Vectus</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="learning.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" id="pageTransition" aria-hidden="true">
+    <div class="page-transition-spinner"></div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <span class="brand-icon">V</span>
+        <span>
+          <strong>vectus<span class="accent">.</span></strong>
+          <small>CAREER INTELLIGENCE</small>
+        </span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="nav-item" href="index.html" data-page="Overview">
+          <span>◫</span> Overview
+        </a>
+        <a class="nav-item active" href="learning.html" data-page="Learning Hub" aria-current="page">
+          <span>◈</span> Learning hub
+        </a>
+        <a class="nav-item" href="cv-builder.html" data-page="CV Builder">
+          <span>▤</span> CV builder
+        </a>
+        <a class="nav-item" href="applications.html" data-page="Applications">
+          <span>📋</span> Applications
+        </a>
+        <a class="nav-item" href="settings.html" data-page="Settings">
+          <span>⚙</span> Settings
+        </a>
+      </nav>
+
+      <section class="roadmap-card" id="sidebarProgress">
+        <span class="eyebrow">YOUR PROGRESS</span>
+        <h3>Learning roadmap</h3>
+        <p>Turn your skill gaps into focused action steps.</p>
+        <div class="progress-track">
+          <div class="progress-fill" id="planProgress" style="width: 0%"></div>
+        </div>
+        <div class="progress-meta">
+          <span>Tasks completed</span>
+          <span id="progressLabel">0%</span>
+        </div>
+      </section>
+
+      <div class="sidebar-bottom">
+        <a class="nav-item" href="settings.html" data-page="Settings">
+          <span>⚙</span> Settings
+        </a>
+        <div class="user-profile">
+          <div class="avatar" id="userAvatar">AM</div>
+          <div>
+            <strong id="userName">Alex Morgan</strong>
+            <small id="userPlan">Free plan · Demo</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <div>
+        <p class="page-name">Learning hub</p>
+        <p class="breadcrumb">Workspace / Learning hub</p>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Dark mode</span>
+      </button>
+    </header>
+
+    <div class="content">
+      <!-- Hero / Continue Learning Section -->
+      <section class="hero learning-hero" aria-labelledby="learningHeroTitle">
+        <div class="hero-copy">
+          <span class="badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            YOUR LEARNING WORKSPACE
+          </span>
+          <h1 id="learningHeroTitle">Learn. <span class="accent">Practice.</span> Grow.</h1>
+          <p class="hero-text">
+            Build useful skills through guided lessons, hands-on exercises, and real projects.
+          </p>
+          <div class="continue-learning" id="continueLearning">
+            <div class="continue-card">
+              <div class="continue-info">
+                <span class="eyebrow">CONTINUE LEARNING</span>
+                <h3 id="continueTitle">Start your first lesson</h3>
+                <p class="muted-text" id="continueDesc">Choose a learning path or explore topics below</p>
+              </div>
+              <div class="continue-progress">
+                <div class="progress-ring-wrapper" id="continueProgressRing">
+                  <svg class="progress-ring" width="64" height="64" viewBox="0 0 64 64">
+                    <circle class="progress-ring-bg" cx="32" cy="32" r="28" />
+                    <circle class="progress-ring-fill" cx="32" cy="32" r="28" />
+                  </svg>
+                  <span class="progress-ring-value" id="continueProgressValue">0%</span>
+                </div>
+              </div>
+              <button class="primary-button" id="continueBtn" style="margin-top: var(--space-3); width: 100%;">
+                Choose a path →
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="learning-visual">
+            <svg viewBox="0 0 240 240" class="learning-svg">
+              <defs>
+                <linearGradient id="learningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.3"/>
+                </linearGradient>
+              </defs>
+              <circle cx="120" cy="120" r="80" class="learning-ring" stroke="url(#learningGradient)" stroke-width="3"/>
+              <circle cx="120" cy="120" r="60" class="learning-ring" stroke="url(#learningGradient)" stroke-width="2"/>
+              <circle cx="120" cy="120" r="40" class="learning-ring" stroke="url(#learningGradient)" stroke-width="1"/>
+              <g class="learning-nodes">
+                <circle cx="120" cy="40" r="10" fill="#8b5cf6" class="learning-node pulse"/>
+                <circle cx="185" cy="95" r="10" fill="#06b6d4" class="learning-node pulse" style="animation-delay: -2s"/>
+                <circle cx="185" cy="145" r="10" fill="#34d399" class="learning-node pulse" style="animation-delay: -4s"/>
+                <circle cx="120" cy="200" r="10" fill="#fbbf24" class="learning-node pulse" style="animation-delay: -6s"/>
+                <circle cx="55" cy="145" r="10" fill="#fb7185" class="learning-node pulse" style="animation-delay: -8s"/>
+                <circle cx="55" cy="95" r="10" fill="#a78bfa" class="learning-node pulse" style="animation-delay: -10s"/>
+              </g>
+              <circle cx="120" cy="120" r="18" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+              <text x="120" y="125" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="bold">📚</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Bar -->
+      <section class="stat-bar" aria-label="Learning statistics" style="margin-bottom: var(--space-6);">
+        <div class="stat-card">
+          <strong id="statLessons">0</strong>
+          <span>Lessons done</span>
+        </div>
+        <div class="stat-card">
+          <strong id="statExercises">0</strong>
+          <span>Exercises passed</span>
+        </div>
+        <div class="stat-card">
+          <strong id="statProjects">0</strong>
+          <span>Projects done</span>
+        </div>
+        <div class="stat-card">
+          <strong id="statSkills">0</strong>
+          <span>Skills learning</span>
+        </div>
+      </section>
+
+      <!-- Learning Paths Explorer -->
+      <section class="panel" id="pathsSection" aria-labelledby="pathsTitle" style="margin-bottom: var(--space-6);">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">LEARNING PATHS</span>
+            <h2 id="pathsTitle">Explore Learning Paths</h2>
+            <p class="muted-text">Choose a topic or follow recommendations based on your Growth Plan.</p>
+          </div>
+        </div>
+        <div class="paths-grid" id="pathsGrid"></div>
+      </section>
+
+      <!-- Active Lesson Viewer (hidden by default) -->
+      <section class="panel" id="lessonViewer" hidden aria-labelledby="lessonViewerTitle">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">LESSON</span>
+            <h2 id="lessonViewerTitle">Lesson</h2>
+          </div>
+          <button class="secondary-button" id="closeLessonViewer">← Back to paths</button>
+        </div>
+        <div class="lesson-layout">
+          <aside class="lesson-sidebar" id="lessonSidebar">
+            <nav class="lesson-nav" aria-label="Lesson modules">
+              <div class="lesson-nav-header">
+                <h3 id="lessonPathTitle">Learning Path</h3>
+                <span class="lesson-nav-progress" id="lessonNavProgress">0% complete</span>
+              </div>
+              <ul class="lesson-module-list" id="lessonModuleList"></ul>
+            </nav>
+          </aside>
+          <div class="lesson-main">
+            <article class="lesson-content" id="lessonContent">
+              <div class="lesson-header">
+                <span class="lesson-module-badge" id="lessonModuleBadge">Module 1</span>
+                <h1 id="lessonTitle">Lesson Title</h1>
+                <p class="muted-text" id="lessonDescription">Lesson description</p>
+                <div class="lesson-meta">
+                  <span><strong>Est. time:</strong> <span id="lessonDuration">15 min</span></span>
+                  <span><strong>Difficulty:</strong> <span id="lessonDifficulty">Beginner</span></span>
+                </div>
+              </div>
+              <div class="lesson-body" id="lessonBody"></div>
+              <div class="lesson-actions">
+                <button class="secondary-button" id="prevLesson" disabled>← Previous</button>
+                <div class="lesson-progress-bar">
+                  <div class="progress-track">
+                    <div class="progress-fill" id="lessonProgressFill" style="width: 0%"></div>
+                  </div>
+                  <span class="muted-text" id="lessonProgressText">0% complete</span>
+                </div>
+                <button class="primary-button" id="nextLesson">Next →</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exercise Viewer (hidden by default) -->
+      <section class="panel" id="exerciseViewer" hidden aria-labelledby="exerciseViewerTitle">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">EXERCISE</span>
+            <h2 id="exerciseViewerTitle">Practice Exercise</h2>
+          </div>
+          <button class="secondary-button" id="closeExerciseViewer">← Back</button>
+        </div>
+        <div class="exercise-layout">
+          <div class="exercise-content" id="exerciseContent">
+            <div class="exercise-header">
+              <span class="exercise-type-badge" id="exerciseTypeBadge">Quiz</span>
+              <h1 id="exerciseTitle">Exercise Title</h1>
+              <p class="muted-text" id="exerciseDescription">Exercise description</p>
+            </div>
+            <form class="exercise-form" id="exerciseForm">
+              <div class="exercise-question" id="exerciseQuestion"></div>
+              <div class="exercise-options" id="exerciseOptions"></div>
+              <div class="exercise-feedback hidden" id="exerciseFeedback"></div>
+            </form>
+            <div class="exercise-actions">
+              <button class="secondary-button" id="prevExercise" disabled>← Previous</button>
+              <button class="primary-button" id="submitExercise" type="button">Submit Answer</button>
+              <button class="primary-button hidden" id="nextExercise">Next →</button>
+            </div>
+          </div>
+          <aside class="exercise-sidebar">
+            <div class="exercise-progress-panel">
+              <h3>Your Progress</h3>
+              <div class="progress-ring-wrapper" style="margin: var(--space-3) auto;">
+                <svg class="progress-ring" width="80" height="80" viewBox="0 0 80 80">
+                  <circle class="progress-ring-bg" cx="40" cy="40" r="36" />
+                  <circle class="progress-ring-fill" cx="40" cy="40" r="36" />
+                </svg>
+                <span class="progress-ring-value" id="exerciseProgressValue">0%</span>
+              </div>
+              <p class="muted-text" style="text-align: center;" id="exerciseProgressText">0 of 0 questions</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Project Lab (hidden by default) -->
+      <section class="panel" id="projectLab" hidden aria-labelledby="projectLabTitle">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">PROJECT LAB</span>
+            <h2 id="projectLabTitle">Build a Project</h2>
+            <p class="muted-text">Apply what you've learned. Build something real for your portfolio.</p>
+          </div>
+          <button class="secondary-button" id="closeProjectLab">← Back</button>
+        </div>
+        <div class="project-lab-layout">
+          <aside class="project-sidebar">
+            <nav class="project-steps" id="projectSteps"></nav>
+          </aside>
+          <div class="project-main">
+            <article class="project-content" id="projectContent"></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice Modes Quick Access -->
+      <section class="panel" id="practiceModes" aria-labelledby="practiceModesTitle" style="margin-bottom: var(--space-6);">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">PRACTICE MODES</span>
+            <h2 id="practiceModesTitle">Put Your Skills Into Practice</h2>
+            <p class="muted-text">Interactive exercises, hands-on projects, and AI-assisted learning.</p>
+          </div>
+        </div>
+        <div class="practice-grid" id="practiceGrid">
+          <article class="practice-card" data-mode="exercises">
+            <div class="practice-icon">❓</div>
+            <div class="practice-content">
+              <h3>Interactive Exercises</h3>
+              <p>Answer questions, solve coding challenges, and get instant feedback. Adaptive difficulty based on your level.</p>
+              <div class="practice-meta">
+                <span class="practice-tag">Auto-graded</span>
+                <span class="practice-tag">Explanations included</span>
+              </div>
+            </div>
+            <button class="primary-button practice-start" data-path="">Start exercising →</button>
+          </article>
+
+          <article class="practice-card" data-mode="projects">
+            <div class="practice-icon">🛠</div>
+            <div class="practice-content">
+              <h3>Project Lab</h3>
+              <p>Build real projects with guided milestones. Each project demonstrates a specific skill for your CV and portfolio.</p>
+              <div class="practice-meta">
+                <span class="practice-tag">Portfolio-ready</span>
+                <span class="practice-tag">Step-by-step</span>
+              </div>
+            </div>
+            <button class="primary-button practice-start" data-path="">Start project →</button>
+          </article>
+
+          <article class="practice-card" data-mode="ai">
+            <div class="practice-icon">🤖</div>
+            <div class="practice-content">
+              <h3>AI Learning Assistant</h3>
+              <p>Ask questions, request explanations, get hints when you're stuck, and generate practice problems on demand.</p>
+              <div class="practice-meta">
+                <span class="practice-tag">Context-aware</span>
+                <span class="practice-tag">Always available</span>
+              </div>
+            </div>
+            <button class="primary-button practice-start" data-path="">Open assistant →</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skill Progress Tracker -->
+      <section class="panel" id="skillProgressSection" aria-labelledby="skillProgressTitle" style="margin-bottom: var(--space-6);">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">PROGRESS</span>
+            <h2 id="skillProgressTitle">Skill Progress</h2>
+            <p class="muted-text">Track lessons completed, exercises solved, and projects shipped for each skill.</p>
+          </div>
+        </div>
+        <div class="skill-progress-grid" id="skillProgressGrid">
+          <div class="skill-progress-placeholder">
+            <p class="muted-text">Start learning to track your skill progress here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Learning Resources Library -->
+      <section class="panel" id="resourcesSection" aria-labelledby="resourcesTitle">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">LIBRARY</span>
+            <h2 id="resourcesTitle">Learning Resources</h2>
+            <p class="muted-text">Curated free resources for the most in-demand skills. Filter by your focus areas.</p>
+          </div>
+        </div>
+        <div class="resources-toolbar">
+          <input type="search" id="resourceSearch" placeholder="Search resources..." aria-label="Search resources">
+          <select id="resourceFilter" aria-label="Filter by skill">
+            <option value="all">All skills</option>
+            <option value="html & css">HTML & CSS</option>
+            <option value="javascript">JavaScript</option>
+            <option value="react">React</option>
+            <option value="python">Python</option>
+            <option value="system design">System Design</option>
+            <option value="communication">Communication</option>
+          </select>
+          <select id="resourceTypeFilter" aria-label="Filter by type">
+            <option value="all">All types</option>
+            <option value="Course">Courses</option>
+            <option value="Practice">Practice</option>
+            <option value="Project">Projects</option>
+            <option value="Reading">Reading</option>
+          </select>
+        </div>
+        <div class="resources-grid" id="resourcesGrid"></div>
+      </section>
+    </div>
+  </main>
+</div>
+  <script src="theme.js"></script>
+  <script src="toast.js"></script>
+</body>
+</html>

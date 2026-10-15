@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vectus helps you develop your skills and find your next career opportunity.">
+  <title>Vectus — Career Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" id="pageTransition" aria-hidden="true">
+    <div class="page-transition-spinner"></div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+      <a class="brand" href="#" data-page="Overview">
+        <span class="brand-icon">V</span>
+        <span>
+          <strong>vectus<span class="accent">.</span></strong>
+          <small>CAREER INTELLIGENCE</small>
+        </span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="nav-item active" href="index.html" data-page="Overview" aria-current="page">
+          <span>◫</span> Overview
+        </a>
+        <a class="nav-item" href="learning.html" data-page="Learning Hub">
+          <span>◈</span> Learning hub
+        </a>
+        <a class="nav-item" href="cv-builder.html" data-page="CV Builder">
+          <span>▤</span> CV builder
+        </a>
+        <a class="nav-item" href="applications.html" data-page="Applications">
+          <span>📋</span> Applications
+        </a>
+        <a class="nav-item" href="settings.html" data-page="Settings">
+          <span>⚙</span> Settings
+        </a>
+      </nav>
+
+      <section class="roadmap-card">
+        <span class="eyebrow">YOUR PROGRESS</span>
+        <h3>Career roadmap</h3>
+        <p>Your journey toward your next opportunity.</p>
+        <div class="progress-track">
+          <div class="progress-fill" style="width: 0%"></div>
+        </div>
+        <div class="progress-meta">
+          <span>0 of 9 milestones</span>
+          <span>0%</span>
+        </div>
+      </section>
+
+      <div class="sidebar-bottom">
+        <a class="nav-item" href="#" data-page="Settings">
+          <span>⚙</span> Settings
+        </a>
+        <div class="user-profile">
+          <div class="avatar" id="userAvatar">AM</div>
+          <div>
+            <strong id="userName">Alex Morgan</strong>
+            <small id="userPlan">Free plan · Demo</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <main class="main" id="mainContent">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <div>
+          <p class="page-name" id="pageName">Overview</p>
+          <p class="breadcrumb" id="breadcrumb">Overview</p>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label">Dark mode</span>
+        </button>
+        <button class="notification-button" id="notificationButton" aria-label="Notifications">🔔</button>
+      </header>
+
+      <div class="content">
+        <section class="hero" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <span class="badge">
+              <span class="status-dot" aria-hidden="true"></span>
+              WELCOME TO VECTUS
+            </span>
+            <h1 id="heroTitle">Your career, <span class="accent">with direction</span></h1>
+            <p class="hero-text">
+              Assess your skills, build a growth plan, create a CV, and match with opportunities — all in one place.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="learning.html">Start learning →</a>
+              <a class="secondary-button" href="cv-builder.html">Build your CV</a>
+              <a class="secondary-button" href="applications.html">Track applications</a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <svg viewBox="0 0 200 200" class="orbit-svg">
+              <circle cx="100" cy="100" r="60" class="orbit-ring" />
+              <circle cx="100" cy="100" r="90" class="orbit-ring" />
+              <circle cx="100" cy="100" r="120" class="orbit-ring" />
+              <circle cx="100" cy="40" r="14" class="orbit-node" />
+              <circle cx="155" cy="100" r="14" class="orbit-node" />
+              <circle cx="100" cy="160" r="14" class="orbit-node" />
+              <circle cx="45" cy="100" r="14" class="orbit-node" />
+            </svg>
+          </div>
+        </section>
+
+        <section class="overview-grid" id="overviewGrid" aria-label="Vectus features">
+          <article class="dashboard-card" data-page="Learning Hub">
+            <span class="card-icon">◈</span>
+            <h3>Learning hub</h3>
+            <p>Follow guided paths, practice skills, and build portfolio projects.</p>
+            <span class="card-link">Start learning →</span>
+          </article>
+
+          <article class="dashboard-card" data-page="CV Builder">
+            <span class="card-icon">▤</span>
+            <h3>CV builder</h3>
+            <p>Create a professional CV with live preview and multiple templates.</p>
+            <span class="card-link">Build CV →</span>
+          </article>
+
+          <article class="dashboard-card" data-page="Applications">
+            <span class="card-icon">📋</span>
+            <h3>Applications tracker</h3>
+            <p>Track applications, interviews, and follow-ups in one place.</p>
+            <span class="card-link">Track applications →</span>
+          </article>
+
+          <article class="dashboard-card" data-page="Settings">
+            <span class="card-icon">⚙</span>
+            <h3>Settings</h3>
+            <p>Manage your profile, preferences, and data.</p>
+            <span class="card-link">Open settings →</span>
+          </article>
+        </section>
+
+        <section class="stat-bar" aria-label="Dashboard statistics">
+          <div class="stat-card">
+            <strong id="statLearning">0</strong>
+            <span>Lessons completed</span>
+          </div>
+          <div class="stat-card">
+            <strong id="statProjects">0</strong>
+            <span>Projects built</span>
+          </div>
+          <div class="stat-card">
+            <strong id="statSkills">0</strong>
+            <span>Skills in progress</span>
+          </div>
+          <div class="stat-card">
+            <strong id="statApplications">0</strong>
+            <span>Applications</span>
+          </div>
+        </section>
+
+        <section class="panel" id="growth-plan" aria-labelledby="nextStepsTitle">
+          <span class="eyebrow">NEXT STEPS</span>
+          <h2 id="nextStepsTitle">Where to go from here</h2>
+          <p class="muted-text">
+            Start learning with guided paths, build your CV, and track your applications.
+          </p>
+          <div style="margin-top: 20px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <a class="primary-button" href="learning.html">Start learning</a>
+            <a class="secondary-button" href="cv-builder.html">Build your CV</a>
+            <a class="secondary-button" href="applications.html">Track applications</a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="theme.js"></script>
+  <script src="toast.js"></script>
+</body>
+</html>

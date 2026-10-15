@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore career opportunities and compare job requirements with your skills on Vectus.">
+  <title>Job Matching | Vectus</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="jobs.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" id="pageTransition" aria-hidden="true">
+    <div class="page-transition-spinner"></div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html">
+        <span class="brand-icon">V</span>
+        <span>
+          <strong>vectus<span class="accent">.</span></strong>
+          <small>CAREER INTELLIGENCE</small>
+        </span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="nav-item" href="index.html" data-page="Overview"><span>◫</span> Overview</a>
+        <a class="nav-item" href="assessment.html" data-page="Skill Assessment"><span>◎</span> Skill assessment</a>
+        <a class="nav-item" href="growth-plan.html" data-page="Growth Plan"><span>↗</span> Growth plan</a>
+        <a class="nav-item" href="cv-builder.html" data-page="CV Builder"><span>▤</span> CV builder</a>
+        <a class="nav-item active" href="jobs.html" data-page="Find Jobs" aria-current="page"><span>⌕</span> Job matching</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <p class="nav-label">CAREER SEARCH</p>
+        <p class="muted-text">Find opportunities that fit your direction.</p>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div>
+          <p class="page-name">Job Matching</p>
+          <p class="breadcrumb">Workspace / Job Matching</p>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label">Dark mode</span>
+        </button>
+      </header>
+
+      <section class="jobs-hero">
+        <div class="jobs-hero-copy">
+          <span class="eyebrow">YOUR NEXT OPPORTUNITY</span>
+          <h2>Find work that moves you forward.</h2>
+          <p>Explore roles, see which skills you already have, and discover what to learn next.</p>
+        </div>
+        <div class="jobs-hero-icon" aria-hidden="true">
+          <span>⌕</span>
+          <div class="jobs-hero-orbit"></div>
+        </div>
+      </section>
+
+      <section class="job-search-panel" aria-label="Search and filter jobs">
+        <form id="jobSearchForm">
+          <div class="job-search-input">
+            <label for="jobSearch">Search roles or skills</label>
+            <input id="jobSearch" type="search" placeholder="e.g. Python, frontend developer">
+          </div>
+          <div class="job-filter-field">
+            <label for="jobType">Job type</label>
+            <select id="jobType">
+              <option value="all">All types</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Internship">Internship</option>
+              <option value="Freelance">Freelance</option>
+            </select>
+          </div>
+          <div class="job-filter-field">
+            <label for="jobLocation">Location</label>
+            <select id="jobLocation">
+              <option value="all">All locations</option>
+              <option value="Remote">Remote</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="On-site">On-site</option>
+            </select>
+          </div>
+          <button class="primary-button job-search-button" type="submit">Search jobs ⌕</button>
+        </form>
+      </section>
+
+      <section class="job-overview">
+        <div class="job-overview-item">
+          <span class="stat-label">Opportunities shown</span>
+          <strong id="jobCount">0</strong>
+        </div>
+        <div class="job-overview-item">
+          <span class="stat-label">Saved jobs</span>
+          <strong id="savedJobCount">0</strong>
+        </div>
+        <div class="job-overview-item">
+          <span class="stat-label">Profile status</span>
+          <strong id="profileStatus">Not assessed</strong>
+        </div>
+      </section>
+
+      <section class="job-results-section">
+        <div class="job-results-heading">
+          <div>
+            <span class="eyebrow">EXPLORE ROLES</span>
+            <h2>Opportunities for you</h2>
+            <p id="resultsDescription">Sample opportunities to demonstrate matching.</p>
+          </div>
+          <div class="job-sort">
+            <label for="jobSort">Sort by</label>
+            <select id="jobSort">
+              <option value="match">Skill match</option>
+              <option value="title">Job title</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="job-layout">
+          <div class="job-list" id="jobList" aria-live="polite"></div>
+
+          <aside class="job-side-column">
+            <div class="job-profile-card">
+              <span class="job-side-icon">👤</span>
+              <span class="eyebrow">YOUR PROFILE</span>
+              <h3 id="profileRole">Set your career goal</h3>
+              <p id="profileSummary">Complete the skill assessment to compare your skills with role requirements.</p>
+              <a href="assessment.html" class="text-link">Update assessment ⌕</a>
+            </div>
+
+            <div class="job-profile-card">
+              <span class="job-side-icon">📈</span>
+              <span class="eyebrow">YOUR NEXT STEP</span>
+              <h3 id="skillGapTitle">Build your skill profile</h3>
+              <p id="skillGapDescription">Your assessment can help identify skills to develop for your target roles.</p>
+              <a href="growth-plan.html" class="text-link">View growth plan ↗</a>
+            </div>
+          </aside>
+        </div>
+
+        <div class="job-empty-state" id="jobEmptyState" hidden>
+          <span class="job-empty-symbol">🔍</span>
+          <h3>No matching opportunities</h3>
+          <p>Try a different keyword or change your filters.</p>
+          <button class="secondary-button" id="resetJobFilters" type="button">Clear filters</button>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span>Vectus · Your growth, your direction.</span>
+        <span>Demo listings — not live vacancies.</span>
+      </footer>
+    </main>
+  </div>
+
+<dialog class="job-detail-dialog" id="jobDetailDialog">
+    <div class="job-detail-content">
+      <button class="job-detail-close" id="closeJobDetail" type="button" aria-label="Close details">×</button>
+      <span class="eyebrow">ROLE DETAILS</span>
+      <div id="jobDetailBody"></div>
+    </div>
+  </dialog>
+  <script src="theme.js"></script>
+  <script src="toast.js"></script>
+</body>
+</html>

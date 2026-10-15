@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create and preview your professional CV with Vectus.">
+  <title>CV Builder | Vectus</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="cv-builder.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" id="pageTransition" aria-hidden="true">
+    <div class="page-transition-spinner"></div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html">
+        <span class="brand-icon">V</span>
+        <span>
+          <strong>vectus<span class="accent">.</span></strong>
+          <small>CAREER INTELLIGENCE</small>
+        </span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="nav-item" href="index.html" data-page="Overview"><span>◫</span> Overview</a>
+        <a class="nav-item" href="learning.html" data-page="Learning Hub"><span>◈</span> Learning hub</a>
+        <a class="nav-item active" href="cv-builder.html" data-page="CV Builder" aria-current="page"><span>▤</span> CV builder</a>
+        <a class="nav-item" href="applications.html" data-page="Applications"><span>📋</span> Applications</a>
+        <a class="nav-item" href="settings.html" data-page="Settings"><span>⚙</span> Settings</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a class="nav-item" href="settings.html" data-page="Settings">
+          <span>⚙</span> Settings
+        </a>
+        <div class="nav-label">CV CHECKLIST</div>
+        <p class="muted-text" id="cvChecklistText">Fill in your details to get started.</p>
+        <div class="progress-track"><div id="cvProgressBar"></div></div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div>
+          <p class="page-name">CV Builder</p>
+          <p class="breadcrumb">Workspace / CV Builder</p>
+        </div>
+        <div class="autosave-indicator" id="autosaveIndicator" aria-live="polite" aria-atomic="true">
+          <span class="dot"></span>
+          <span class="autosave-text">Saved</span>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label">Dark mode</span>
+        </button>
+      </header>
+
+      <section class="cv-intro">
+        <div>
+          <span class="eyebrow">YOUR CAREER STORY</span>
+          <h2>Make your experience speak for itself.</h2>
+          <p>Build a clear, professional CV that you can customize for the opportunities you want.</p>
+        </div>
+        <div class="cv-intro-mark" aria-hidden="true">CV<span>.</span></div>
+      </section>
+
+      <section class="cv-toolbar" aria-label="CV settings">
+        <div>
+          <label for="cvLanguage">CV language</label>
+          <select id="cvLanguage">
+            <option value="en">English</option>
+            <option value="ar">العربية — Arabic</option>
+          </select>
+        </div>
+        <div>
+          <label for="cvTemplate">Template</label>
+          <select id="cvTemplate">
+            <option value="classic">Professional</option>
+            <option value="modern">Modern</option>
+          </select>
+        </div>
+        <button class="primary-button" id="printCv" type="button">Print / Save PDF ⬇</button>
+      </section>
+
+      <div class="cv-workspace">
+        <section class="cv-editor">
+          <form id="cvForm">
+            <div class="cv-form-section">
+              <div class="cv-form-heading">
+                <span class="cv-step">01</span>
+                <div><h2>Personal information</h2><p>How employers can reach you.</p></div>
+              </div>
+
+              <div class="cv-fields">
+                <div class="cv-field full-width">
+                  <label for="fullName">Full name *</label>
+                  <input id="fullName" name="fullName" placeholder="e.g. Andrew Milad" required>
+                </div>
+                <div class="cv-field full-width">
+                  <label for="professionalTitle">Professional title *</label>
+                  <input id="professionalTitle" name="professionalTitle" placeholder="e.g. Full-Stack Web Developer" required>
+                </div>
+                <div class="cv-field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@example.com">
+                </div>
+                <div class="cv-field">
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="phone" type="tel" placeholder="+20 ...">
+                </div>
+                <div class="cv-field full-width">
+                  <label for="location">Location</label>
+                  <input id="location" name="location" placeholder="City, Country">
+                </div>
+                <div class="cv-field full-width">
+                  <label for="website">Portfolio or LinkedIn URL</label>
+                  <input id="website" name="website" type="url" placeholder="https://...">
+                </div>
+              </div>
+            </div>
+
+            <div class="cv-form-section">
+              <div class="cv-form-heading">
+                <span class="cv-step">02</span>
+                <div><h2>Professional summary</h2><p>Introduce your strengths and direction.</p></div>
+              </div>
+              <div class="cv-field">
+                <label for="summary">Summary</label>
+                <textarea id="summary" name="summary" rows="4" placeholder="Write 2–4 sentences about your skills, experience, and career goals."></textarea>
+              </div>
+            </div>
+
+            <div class="cv-form-section">
+              <div class="cv-form-heading">
+                <span class="cv-step">03</span>
+                <div><h2>Work experience</h2><p>Include relevant roles, internships, and freelance work.</p></div>
+              </div>
+              <div id="experienceList" class="cv-entry-list"></div>
+              <button class="secondary-button" type="button" id="addExperience">+ Add experience</button>
+            </div>
+
+            <div class="cv-form-section">
+              <div class="cv-form-heading">
+                <span class="cv-step">04</span>
+                <div><h2>Education</h2><p>List your qualifications and relevant studies.</p></div>
+              </div>
+              <div id="educationList" class="cv-entry-list"></div>
+              <button class="secondary-button" type="button" id="addEducation">+ Add education</button>
+            </div>
+
+            <div class="cv-form-section">
+              <div class="cv-form-heading">
+                <span class="cv-step">05</span>
+                <div><h2>Skills and projects</h2><p>Show relevant skills and work samples.</p></div>
+              </div>
+              <div class="cv-field">
+                <label for="skills">Skills</label>
+                <textarea id="skills" name="skills" rows="3" placeholder="JavaScript, HTML, CSS, Python, Django"></textarea>
+                <span class="cv-hint">Separate skills with commas or new lines.</span>
+              </div>
+              <div class="cv-field">
+                <label for="projects">Projects</label>
+                <textarea id="projects" name="projects" rows="4" placeholder="Project name — what you built, which technologies you used, and the result."></textarea>
+              </div>
+              <div class="cv-field">
+                <label for="certifications">Certifications or courses</label>
+                <textarea id="certifications" name="certifications" rows="2" placeholder="Course or certificate name"></textarea>
+              </div>
+            </div>
+
+            <div class="cv-editor-actions">
+              <button class="secondary-button" id="clearCv" type="button">Clear form</button>
+              <span class="cv-hint">Your draft is saved locally in this browser.</span>
+            </div>
+          </form>
+        </section>
+
+        <section class="cv-preview-column">
+          <div class="cv-preview-heading">
+            <div><span class="eyebrow">LIVE PREVIEW</span><h2>Your CV</h2></div>
+            <span class="cv-live-indicator">⬤ Live</span>
+          </div>
+
+          <article class="cv-paper" id="cvPaper">
+            <header class="cv-paper-header">
+              <h1 id="previewName">Your Name</h1>
+              <p class="cv-paper-title" id="previewTitle">Your Professional Title</p>
+              <div class="cv-contact" id="previewContact"></div>
+            </header>
+            <section class="cv-paper-section" id="previewSummarySection">
+              <h2 data-en="PROFILE" data-ar="الملخص المهني">PROFILE</h2>
+              <p id="previewSummary">Your professional summary will appear here.</p>
+            </section>
+            <section class="cv-paper-section" id="previewExperienceSection">
+              <h2 data-en="EXPERIENCE" data-ar="الخبرات العملية">EXPERIENCE</h2>
+              <div id="previewExperience"></div>
+            </section>
+            <section class="cv-paper-section" id="previewEducationSection">
+              <h2 data-en="EDUCATION" data-ar="التعليم">EDUCATION</h2>
+              <div id="previewEducation"></div>
+            </section>
+            <section class="cv-paper-section" id="previewSkillsSection">
+              <h2 data-en="SKILLS" data-ar="المهارات">SKILLS</h2>
+              <div id="previewSkills"></div>
+            </section>
+            <section class="cv-paper-section" id="previewProjectsSection">
+              <h2 data-en="PROJECTS" data-ar="المشاريع">PROJECTS</h2>
+              <p id="previewProjects"></p>
+            </section>
+            <section class="cv-paper-section" id="previewCertificationsSection">
+              <h2 data-en="CERTIFICATIONS" data-ar="الشهادات والدورات">CERTIFICATIONS</h2>
+              <p id="previewCertifications"></p>
+            </section>
+          </article>
+          <p class="cv-preview-note">Preview only. Review all details before sending your CV to an employer.</p>
+        </section>
+      </div>
+
+<footer class="page-footer">
+        <span>Vectus · Your growth, your direction.</span>
+        <span>Your CV should reflect your real experience.</span>
+      </footer>
+    </main>
+  </div>
+  <script src="theme.js"></script>
+  <script src="toast.js"></script>
+</body>
+</html>

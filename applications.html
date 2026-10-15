@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applications | Vectus</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="applications.js" defer></script>
+</head>
+<body>
+  <div class="page-transition" id="pageTransition" aria-hidden="true">
+    <div class="page-transition-spinner"></div>
+  </div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html">
+        <span class="brand-icon">V</span>
+        <span>
+          <strong>vectus<span class="accent">.</span></strong>
+          <small>CAREER INTELLIGENCE</small>
+        </span>
+      </a>
+
+      <p class="nav-label">WORKSPACE</p>
+
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="nav-item" href="index.html" data-page="Overview"><span>◫</span> Overview</a>
+        <a class="nav-item" href="learning.html" data-page="Learning Hub"><span>◈</span> Learning hub</a>
+        <a class="nav-item" href="cv-builder.html" data-page="CV Builder"><span>▤</span> CV builder</a>
+        <a class="nav-item active" href="applications.html" data-page="Applications" aria-current="page"><span>📋</span> Applications</a>
+        <a class="nav-item" href="settings.html" data-page="Settings"><span>⚙</span> Settings</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a class="nav-item" href="#" data-page="Settings"><span>⚙</span> Settings</a>
+        <div class="user-profile">
+          <div class="avatar">AM</div>
+          <div>
+            <strong>Alex Morgan</strong>
+            <small>Demo profile</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div>
+          <p class="page-name">Applications</p>
+          <p class="breadcrumb">Workspace / Applications</p>
+        </div>
+        <div class="autosave-indicator" id="autosaveIndicator" aria-live="polite" aria-atomic="true">
+          <span class="dot"></span>
+          <span class="autosave-text">Saved</span>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span class="theme-label">Dark mode</span>
+        </button>
+      </header>
+
+      <div class="content">
+        <div class="applications-page">
+          <header class="applications-header">
+            <div>
+              <p class="eyebrow">YOUR CAREER JOURNEY</p>
+              <h1>Applications</h1>
+              <p class="muted-text">Keep track of opportunities and follow up on your progress.</p>
+            </div>
+            <button class="primary-button" id="open-application-form" type="button">+ Add application</button>
+          </header>
+
+          <section class="application-stats" aria-label="Application summary">
+            <div class="application-stat">
+              <p>Total applications</p>
+              <strong id="stat-total">0</strong>
+            </div>
+            <div class="application-stat">
+              <p>Applied</p>
+              <strong id="stat-applied">0</strong>
+            </div>
+            <div class="application-stat">
+              <p>Interviews</p>
+              <strong id="stat-interview">0</strong>
+            </div>
+            <div class="application-stat">
+              <p>Offers</p>
+              <strong id="stat-offer">0</strong>
+            </div>
+          </section>
+
+          <section class="application-form" id="application-form-panel" hidden>
+            <h2 id="application-form-title">Add an application</h2>
+
+            <form id="application-form">
+              <div class="application-form-grid">
+                <div class="application-field">
+                  <label for="job-title">Job title *</label>
+                  <input id="job-title" name="jobTitle" required maxlength="120" placeholder="e.g. Junior Frontend Developer">
+                </div>
+
+                <div class="application-field">
+                  <label for="company-name">Company *</label>
+                  <input id="company-name" name="company" required maxlength="120" placeholder="e.g. Example Company">
+                </div>
+
+                <div class="application-field">
+                  <label for="application-status">Status</label>
+                  <select id="application-status" name="status">
+                    <option value="Saved">Saved</option>
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                  </select>
+                </div>
+
+                <div class="application-field">
+                  <label for="application-date">Date applied / saved</label>
+                  <input id="application-date" name="date" type="date">
+                </div>
+
+                <div class="application-field full-width">
+                  <label for="application-link">Job link (optional)</label>
+                  <input id="application-link" name="link" type="url" placeholder="https://example.com/job">
+                </div>
+
+                <div class="application-field full-width">
+                  <label for="application-notes">Notes (optional)</label>
+                  <textarea id="application-notes" name="notes" rows="3" maxlength="1000" placeholder="Recruiter contact, next steps, or interview notes"></textarea>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 12px; margin-top: 18px; flex-wrap: wrap;">
+                <button class="primary-button application-submit" type="submit">Save application</button>
+                <button class="secondary-button application-cancel" id="cancel-application-form" type="button">Cancel</button>
+              </div>
+            </form>
+          </section>
+
+          <section aria-label="Filter applications">
+            <div class="application-toolbar">
+              <input id="application-search" type="search" placeholder="Search job title or company..." aria-label="Search applications">
+              <select id="application-filter" aria-label="Filter by status">
+                <option value="All">All statuses</option>
+                <option value="Saved">Saved</option>
+                <option value="Applied">Applied</option>
+                <option value="Interview">Interview</option>
+                <option value="Offer">Offer</option>
+                <option value="Rejected">Rejected</option>
+              </select>
+            </div>
+          </section>
+
+          <section id="application-list" class="application-list" aria-live="polite" aria-label="Your applications"></section>
+        </div>
+
+        <footer class="page-footer">
+          <span>Vectus · Your growth, your direction.</span>
+          <span>Track your applications and follow up consistently.</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+  <script src="theme.js"></script>
+  <script src="toast.js"></script>
+</body>
+</html>
